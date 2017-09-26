@@ -5,10 +5,15 @@ setup query
 =======
 
 create table books (id serial PRIMARY KEY, name text NOT NULL, created_at timestamp NOT NULL, updated_at timestamp NOT NULL);
-insert into books (name, created_at, updated_at) values ('foo', now(), now());
+insert into books (name, created_at, updated_at) values ('あしたのジョー', now(), now());
+insert into books (name, created_at, updated_at) values ('おれは鉄兵', now(), now());
+insert into books (name, created_at, updated_at) values ('のたり松太郎', now(), now());
+insert into books (name, created_at, updated_at) values ('おれイガオくん', now(), now());
+insert into books (name, created_at, updated_at) values ('練馬のイタチ', now(), now());
+insert into books (name, created_at, updated_at) values ('あした天気になあれ', now(), now());
 create table users (id serial PRIMARY KEY, name text NOT NULL, password text NOT NULL, created_at timestamp NOT NULL, updated_at timestamp NOT NULL);
-insert into users (name, password, created_at, updated_at) values ('hoge@example.com', 'abcdeabecd', now(), now());
-insert into users (name, password, created_at, updated_at) values ('fuga@example.com', '1230981230', now(), now());
+insert into users (name, password, created_at, updated_at) values ('foo@example.com', 'abcdeabecd', now(), now());
+insert into users (name, password, created_at, updated_at) values ('bar@example.com', '1230981230', now(), now());
 */
 ?>
 <html>
