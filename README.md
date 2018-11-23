@@ -1,22 +1,22 @@
 # vulnerable-site
 
-## Amazon Linux への環境構築手順
+## Amazon Linux 2 への環境構築手順
 
 ### パッケージのインストール、アップデート
 
 ```
 $ sudo yum update -y
-$ sudo yum install -y git httpd php postgresql95-server php-pgsql
-$ sudo chkconfig httpd on
-$ sudo chkconfig postgresql95 on
+$ sudo yum install -y git httpd php postgresql-server php-pgsql
+$ sudo systemctl enable httpd.service
+$ sudo systemctl enable postgresql.service
 $ sudo reboot
 ```
 
 ### PostgreSQL の初期化
 
 ```
-$ sudo service postgresql95 initdb
-$ sudo /etc/init.d/postgresql95 start
+$ sudo service postgresql initdb
+$ sudo systemctl start postgresql
 $ sudo su postgres
 $ psql
 postgres=# create database foo_db;
@@ -32,7 +32,7 @@ foo_db=# \q
 設定ファイルの編集
 
 ```
-$ sudo vim /var/lib/pgsql95/data/pg_hba.conf
+$ sudo vim /var/lib/pgsql/data/pg_hba.conf
 ```
 
 ↓この `peer` の部分を `trust` に書き換えます。
@@ -54,7 +54,6 @@ $ sudo chmod 777 /var/www/html/csrf/bbs.csv
 httpd, PostgerSQL の再起動
 
 ```
-$ sudo /etc/init.d/httpd restart
-$ sudo /etc/init.d/postgresql95 restart
+$ sudo systemctl restart httpd
+$ sudo systemctl restart postgresql
 ```
-
